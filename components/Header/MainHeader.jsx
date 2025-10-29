@@ -3,11 +3,12 @@ import headerLogo from "@/assets/logo.png";
 import styles from "./MainHeader.module.css";
 import Image from "next/image";
 import MainHeaderBackground from "./MainHeaderBackground";
+import NavLink from "../NavLink/NavLink";
 const MainHeader = () => {
     return (
         <>
             <MainHeaderBackground />
-            
+
             <header className={styles.header}>
                 {/*Main logo */}
                 <Link href="/" className={styles.logo}>
@@ -19,11 +20,11 @@ const MainHeader = () => {
                 <nav className={styles.nav}>
                     <ul>
                         <li>
-                            <Link href="/meals">Browse Meals</Link>
+                            <NavLink href="/meals">Browse Meals</NavLink>
                         </li>
 
                         <li>
-                            <Link href="/community">Foodies Community</Link>
+                            <NavLink href="/community">Foodies Community</NavLink>
                         </li>
                     </ul>
                 </nav>
