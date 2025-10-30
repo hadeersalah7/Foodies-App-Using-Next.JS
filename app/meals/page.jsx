@@ -1,27 +1,36 @@
 import Link from "next/link";
-import classes from "./page.module.css"
+import classes from "./page.module.css";
 import MealsGrid from "@/components/MealsGrid/MealsGrid";
 import { getMeals } from "@/lib/meals";
-export default async function Meals() {
-    const meals = await getMeals()
-    return (
-        <>
-            <header className={classes.header}>
-                <h1>Delicious Meals, created</h1>
+import { Suspense } from "react";
 
-                <p>
-                    Choose your favourite recipe and cook it yourself. It's is easy and
-                    fun
-                </p>
+async function AllMeals() {
+  const meals = await getMeals();
+  return <MealsGrid meals={meals} />;
+}
+export default function Meals() {
+  return (
+    <>
+      <header className={classes.header}>
+        <h1>Delicious Meals, created</h1>
 
-                <p className={classes.cta}>
-                    <Link href={"/meals/share"}> Share Your Favourite Recipe</Link>
-                </p>
-            </header>
+        <p>
+          Choose your favourite recipe and cook it yourself. It's is easy and
+          fun
+        </p>
 
-            <main className={classes.main}>
-                <MealsGrid meals={meals} />
-            </main>
-        </>
-    );
+        <p className={classes.cta}>
+          <Link href={"/meals/share"}> Share Your Favourite Recipe</Link>
+        </p>
+      </header>
+
+      <main className={classes.main}>
+        <Suspense
+          fallback={<h3 className={classes.loading}>Fetching Meals...</h3>}
+        >
+          <AllMeals />
+        </Suspense>
+      </main>
+    </>
+  );
 }
