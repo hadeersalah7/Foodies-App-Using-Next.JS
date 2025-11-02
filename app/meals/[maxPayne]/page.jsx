@@ -5,8 +5,8 @@ import { notFound } from "next/navigation";
 const MealDetailPage = ({ params }) => {
     const { maxPayne } = params;
     const meal = getMealById(maxPayne);
-    if(!meal){
-        notFound()
+    if (!meal) {
+        notFound();
     }
     meal.instructions = meal.instructions.replace(/\n/g, "<br/>");
     return (
