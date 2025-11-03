@@ -11,6 +11,7 @@ const ImagePicker = ({ label, name }) => {
     const handleChangeImage = (e) => {
         const file = e.target.files[0];
         if (!file) {
+            setPreviewImage(null);
             return;
         }
         const fileReader = new FileReader();
@@ -40,6 +41,7 @@ const ImagePicker = ({ label, name }) => {
                     className={classes.input}
                     ref={inputImage}
                     onChange={handleChangeImage}
+                    required
                 />
                 <button
                     className={classes.button}
