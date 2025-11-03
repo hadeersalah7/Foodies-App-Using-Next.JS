@@ -15,8 +15,8 @@ export default function Meals() {
                 <h1>Delicious Meals, created</h1>
 
                 <p>
-                    Choose your favourite recipe and cook it yourself. It's is easy and
-                    fun
+                    Choose your favourite recipe and cook it yourself. It&apos;s is easy
+                    and fun
                 </p>
 
                 <p className={classes.cta}>
